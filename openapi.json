@@ -1,0 +1,253 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "MultiTool",
+    "description": "MultiTool",
+    "license": {
+      "name": ""
+    },
+    "version": "0.1.0"
+  },
+  "servers": [
+    {
+      "url": "http://localhost:8000",
+      "description": "Local server for testing"
+    }
+  ],
+  "paths": {
+    "/api/v1/heartbeat": {
+      "get": {
+        "tags": [],
+        "operationId": "heartbeat_controller",
+        "responses": {
+          "200": {
+            "description": "Application is online and available",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "description": "A Heartbeat response indicates the status of the server.\nIn almost every conceivable circumstance, the response should\nbe a success.",
+                  "required": [
+                    "ok"
+                  ],
+                  "properties": {
+                    "ok": {
+                      "type": "boolean"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/users": {
+      "post": {
+        "tags": [
+          "create"
+        ],
+        "operationId": "create",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateUserRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "201": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CreateUserSuccess"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/users/login": {
+      "post": {
+        "tags": [
+          "login"
+        ],
+        "operationId": "login",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/LoginRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Successful login",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/LoginSuccess"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "CleartextPassword": {
+        "type": "string"
+      },
+      "CreateUserRequest": {
+        "type": "object",
+        "description": "Expected body of user endpoint requests",
+        "required": [
+          "email",
+          "password"
+        ],
+        "properties": {
+          "email": {
+            "$ref": "#/components/schemas/Email",
+            "description": "String that may be invalid email address"
+          },
+          "password": {
+            "$ref": "#/components/schemas/CleartextPassword",
+            "description": "Password in cleartext, deserializes into more secure struct"
+          }
+        }
+      },
+      "CreateUserSuccess": {
+        "type": "object",
+        "description": "Successful user creation response body",
+        "required": [
+          "email",
+          "created_at",
+          "jwt"
+        ],
+        "properties": {
+          "created_at": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "email": {
+            "$ref": "#/components/schemas/Email"
+          },
+          "jwt": {
+            "type": "string"
+          }
+        }
+      },
+      "Email": {
+        "type": "string"
+      },
+      "HeartbeatResponse": {
+        "type": "object",
+        "description": "A Heartbeat response indicates the status of the server.\nIn almost every conceivable circumstance, the response should\nbe a success.",
+        "required": [
+          "ok"
+        ],
+        "properties": {
+          "ok": {
+            "type": "boolean"
+          }
+        }
+      },
+      "LoginRequest": {
+        "type": "object",
+        "required": [
+          "email",
+          "password"
+        ],
+        "properties": {
+          "email": {
+            "$ref": "#/components/schemas/Email",
+            "description": "String that may be invalid email address"
+          },
+          "password": {
+            "$ref": "#/components/schemas/CleartextPassword",
+            "description": "Password in cleartext, deserializes into more secure struct"
+          }
+        }
+      },
+      "LoginSuccess": {
+        "type": "object",
+        "description": "Successful login response payload",
+        "required": [
+          "email",
+          "jwt"
+        ],
+        "properties": {
+          "email": {
+            "$ref": "#/components/schemas/Email"
+          },
+          "jwt": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "responses": {
+      "CreateUserSuccess": {
+        "description": "Successful user creation response body",
+        "content": {
+          "application/json": {
+            "schema": {
+              "type": "object",
+              "description": "Successful user creation response body",
+              "required": [
+                "email",
+                "created_at",
+                "jwt"
+              ],
+              "properties": {
+                "created_at": {
+                  "type": "string",
+                  "format": "date-time"
+                },
+                "email": {
+                  "$ref": "#/components/schemas/Email"
+                },
+                "jwt": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
+      },
+      "LoginSuccess": {
+        "description": "Successful login response payload",
+        "content": {
+          "application/json": {
+            "schema": {
+              "type": "object",
+              "description": "Successful login response payload",
+              "required": [
+                "email",
+                "jwt"
+              ],
+              "properties": {
+                "email": {
+                  "$ref": "#/components/schemas/Email"
+                },
+                "jwt": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
