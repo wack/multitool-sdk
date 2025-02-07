@@ -13,15 +13,43 @@
 
 
 import ApiClient from './ApiClient';
+import ApplicationConfig from './model/ApplicationConfig';
+import ApplicationConfigOneOf from './model/ApplicationConfigOneOf';
+import ApplicationDetails from './model/ApplicationDetails';
+import ApplicationSummary from './model/ApplicationSummary';
+import ApplicationType from './model/ApplicationType';
+import AwsConfig from './model/AwsConfig';
+import AwsIngressConfig from './model/AwsIngressConfig';
+import AwsIngressConfigOneOf from './model/AwsIngressConfigOneOf';
+import AwsIngressConfigOneOfRestApiGatewayConfig from './model/AwsIngressConfigOneOfRestApiGatewayConfig';
+import AwsMonitorConfig from './model/AwsMonitorConfig';
+import AwsPlatformConfig from './model/AwsPlatformConfig';
+import AwsPlatformConfigOneOf from './model/AwsPlatformConfigOneOf';
+import AwsPlatformConfigOneOfLambda from './model/AwsPlatformConfigOneOfLambda';
+import CreateApplicationRequest from './model/CreateApplicationRequest';
+import CreateApplicationSuccess from './model/CreateApplicationSuccess';
+import CreateUserFailure from './model/CreateUserFailure';
+import CreateUserFailureOneOf from './model/CreateUserFailureOneOf';
+import CreateUserFailureOneOf1 from './model/CreateUserFailureOneOf1';
+import CreateUserFailureOneOfEmailAlreadyRegistered from './model/CreateUserFailureOneOfEmailAlreadyRegistered';
 import CreateUserRequest from './model/CreateUserRequest';
 import CreateUserSuccess from './model/CreateUserSuccess';
+import CreateWorkspaceRequest from './model/CreateWorkspaceRequest';
+import CreateWorkspaceSuccess from './model/CreateWorkspaceSuccess';
 import HeartbeatController200Response from './model/HeartbeatController200Response';
-import HeartbeatResponse from './model/HeartbeatResponse';
+import ListApplicationsSuccess from './model/ListApplicationsSuccess';
 import LoginRequest from './model/LoginRequest';
 import LoginSuccess from './model/LoginSuccess';
-import CreateApi from './api/CreateApi';
-import DefaultApi from './api/DefaultApi';
-import LoginApi from './api/LoginApi';
+import UpdateWorkspaceRequest from './model/UpdateWorkspaceRequest';
+import WebServiceConfig from './model/WebServiceConfig';
+import WebServiceConfigOneOf from './model/WebServiceConfigOneOf';
+import WorkspaceDetails from './model/WorkspaceDetails';
+import WorkspaceListSuccess from './model/WorkspaceListSuccess';
+import WorkspaceSummary from './model/WorkspaceSummary';
+import ApplicationsApi from './api/ApplicationsApi';
+import HeartbeatApi from './api/HeartbeatApi';
+import UsersApi from './api/UsersApi';
+import WorkspacesApi from './api/WorkspacesApi';
 
 
 /**
@@ -63,6 +91,120 @@ export {
     ApiClient,
 
     /**
+     * The ApplicationConfig model constructor.
+     * @property {module:model/ApplicationConfig}
+     */
+    ApplicationConfig,
+
+    /**
+     * The ApplicationConfigOneOf model constructor.
+     * @property {module:model/ApplicationConfigOneOf}
+     */
+    ApplicationConfigOneOf,
+
+    /**
+     * The ApplicationDetails model constructor.
+     * @property {module:model/ApplicationDetails}
+     */
+    ApplicationDetails,
+
+    /**
+     * The ApplicationSummary model constructor.
+     * @property {module:model/ApplicationSummary}
+     */
+    ApplicationSummary,
+
+    /**
+     * The ApplicationType model constructor.
+     * @property {module:model/ApplicationType}
+     */
+    ApplicationType,
+
+    /**
+     * The AwsConfig model constructor.
+     * @property {module:model/AwsConfig}
+     */
+    AwsConfig,
+
+    /**
+     * The AwsIngressConfig model constructor.
+     * @property {module:model/AwsIngressConfig}
+     */
+    AwsIngressConfig,
+
+    /**
+     * The AwsIngressConfigOneOf model constructor.
+     * @property {module:model/AwsIngressConfigOneOf}
+     */
+    AwsIngressConfigOneOf,
+
+    /**
+     * The AwsIngressConfigOneOfRestApiGatewayConfig model constructor.
+     * @property {module:model/AwsIngressConfigOneOfRestApiGatewayConfig}
+     */
+    AwsIngressConfigOneOfRestApiGatewayConfig,
+
+    /**
+     * The AwsMonitorConfig model constructor.
+     * @property {module:model/AwsMonitorConfig}
+     */
+    AwsMonitorConfig,
+
+    /**
+     * The AwsPlatformConfig model constructor.
+     * @property {module:model/AwsPlatformConfig}
+     */
+    AwsPlatformConfig,
+
+    /**
+     * The AwsPlatformConfigOneOf model constructor.
+     * @property {module:model/AwsPlatformConfigOneOf}
+     */
+    AwsPlatformConfigOneOf,
+
+    /**
+     * The AwsPlatformConfigOneOfLambda model constructor.
+     * @property {module:model/AwsPlatformConfigOneOfLambda}
+     */
+    AwsPlatformConfigOneOfLambda,
+
+    /**
+     * The CreateApplicationRequest model constructor.
+     * @property {module:model/CreateApplicationRequest}
+     */
+    CreateApplicationRequest,
+
+    /**
+     * The CreateApplicationSuccess model constructor.
+     * @property {module:model/CreateApplicationSuccess}
+     */
+    CreateApplicationSuccess,
+
+    /**
+     * The CreateUserFailure model constructor.
+     * @property {module:model/CreateUserFailure}
+     */
+    CreateUserFailure,
+
+    /**
+     * The CreateUserFailureOneOf model constructor.
+     * @property {module:model/CreateUserFailureOneOf}
+     */
+    CreateUserFailureOneOf,
+
+    /**
+     * The CreateUserFailureOneOf1 model constructor.
+     * @property {module:model/CreateUserFailureOneOf1}
+     */
+    CreateUserFailureOneOf1,
+
+    /**
+     * The CreateUserFailureOneOfEmailAlreadyRegistered model constructor.
+     * @property {module:model/CreateUserFailureOneOfEmailAlreadyRegistered}
+     */
+    CreateUserFailureOneOfEmailAlreadyRegistered,
+
+    /**
      * The CreateUserRequest model constructor.
      * @property {module:model/CreateUserRequest}
      */
@@ -75,16 +217,28 @@ export {
     CreateUserSuccess,
 
     /**
+     * The CreateWorkspaceRequest model constructor.
+     * @property {module:model/CreateWorkspaceRequest}
+     */
+    CreateWorkspaceRequest,
+
+    /**
+     * The CreateWorkspaceSuccess model constructor.
+     * @property {module:model/CreateWorkspaceSuccess}
+     */
+    CreateWorkspaceSuccess,
+
+    /**
      * The HeartbeatController200Response model constructor.
      * @property {module:model/HeartbeatController200Response}
      */
     HeartbeatController200Response,
 
     /**
-     * The HeartbeatResponse model constructor.
-     * @property {module:model/HeartbeatResponse}
+     * The ListApplicationsSuccess model constructor.
+     * @property {module:model/ListApplicationsSuccess}
      */
-    HeartbeatResponse,
+    ListApplicationsSuccess,
 
     /**
      * The LoginRequest model constructor.
@@ -99,20 +253,62 @@ export {
     LoginSuccess,
 
     /**
-    * The CreateApi service constructor.
-    * @property {module:api/CreateApi}
-    */
-    CreateApi,
+     * The UpdateWorkspaceRequest model constructor.
+     * @property {module:model/UpdateWorkspaceRequest}
+     */
+    UpdateWorkspaceRequest,
 
     /**
-    * The DefaultApi service constructor.
-    * @property {module:api/DefaultApi}
-    */
-    DefaultApi,
+     * The WebServiceConfig model constructor.
+     * @property {module:model/WebServiceConfig}
+     */
+    WebServiceConfig,
 
     /**
-    * The LoginApi service constructor.
-    * @property {module:api/LoginApi}
+     * The WebServiceConfigOneOf model constructor.
+     * @property {module:model/WebServiceConfigOneOf}
+     */
+    WebServiceConfigOneOf,
+
+    /**
+     * The WorkspaceDetails model constructor.
+     * @property {module:model/WorkspaceDetails}
+     */
+    WorkspaceDetails,
+
+    /**
+     * The WorkspaceListSuccess model constructor.
+     * @property {module:model/WorkspaceListSuccess}
+     */
+    WorkspaceListSuccess,
+
+    /**
+     * The WorkspaceSummary model constructor.
+     * @property {module:model/WorkspaceSummary}
+     */
+    WorkspaceSummary,
+
+    /**
+    * The ApplicationsApi service constructor.
+    * @property {module:api/ApplicationsApi}
     */
-    LoginApi
+    ApplicationsApi,
+
+    /**
+    * The HeartbeatApi service constructor.
+    * @property {module:api/HeartbeatApi}
+    */
+    HeartbeatApi,
+
+    /**
+    * The UsersApi service constructor.
+    * @property {module:api/UsersApi}
+    */
+    UsersApi,
+
+    /**
+    * The WorkspacesApi service constructor.
+    * @property {module:api/WorkspacesApi}
+    */
+    WorkspacesApi
 };

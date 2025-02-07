@@ -26,19 +26,53 @@ All URIs are relative to *http://localhost:8000*
 
 Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
-*CreateApi* | [**create**](docs/CreateApi.md#create) | **POST** /api/v1/users | 
-*DefaultApi* | [**heartbeat_controller**](docs/DefaultApi.md#heartbeat_controller) | **GET** /api/v1/heartbeat | 
-*LoginApi* | [**login**](docs/LoginApi.md#login) | **POST** /api/v1/users/login | 
+*ApplicationsApi* | [**create_application**](docs/ApplicationsApi.md#create_application) | **POST** /api/v1/workspaces/{workspace_id}/applications | 
+*ApplicationsApi* | [**get_application**](docs/ApplicationsApi.md#get_application) | **GET** /api/v1/workspaces/{workspace_id}/applications/{application_id} | 
+*ApplicationsApi* | [**list_applications**](docs/ApplicationsApi.md#list_applications) | **GET** /api/v1/workspaces/{workspace_id}/applications | 
+*HeartbeatApi* | [**heartbeat_controller**](docs/HeartbeatApi.md#heartbeat_controller) | **GET** /api/v1/heartbeat | 
+*UsersApi* | [**create_user**](docs/UsersApi.md#create_user) | **POST** /api/v1/users | 
+*UsersApi* | [**login**](docs/UsersApi.md#login) | **POST** /api/v1/users/login | 
+*WorkspacesApi* | [**create_workspace**](docs/WorkspacesApi.md#create_workspace) | **POST** /api/v1/workspaces | 
+*WorkspacesApi* | [**list_workspaces**](docs/WorkspacesApi.md#list_workspaces) | **GET** /api/v1/workspaces | 
+*WorkspacesApi* | [**read_workspace**](docs/WorkspacesApi.md#read_workspace) | **GET** /api/v1/workspaces/{id} | 
+*WorkspacesApi* | [**update_workspace**](docs/WorkspacesApi.md#update_workspace) | **PATCH** /api/v1/workspaces/{id} | 
 
 
 ## Documentation For Models
 
+ - [ApplicationConfig](docs/ApplicationConfig.md)
+ - [ApplicationConfigOneOf](docs/ApplicationConfigOneOf.md)
+ - [ApplicationDetails](docs/ApplicationDetails.md)
+ - [ApplicationSummary](docs/ApplicationSummary.md)
+ - [ApplicationType](docs/ApplicationType.md)
+ - [AwsConfig](docs/AwsConfig.md)
+ - [AwsIngressConfig](docs/AwsIngressConfig.md)
+ - [AwsIngressConfigOneOf](docs/AwsIngressConfigOneOf.md)
+ - [AwsIngressConfigOneOfRestApiGatewayConfig](docs/AwsIngressConfigOneOfRestApiGatewayConfig.md)
+ - [AwsMonitorConfig](docs/AwsMonitorConfig.md)
+ - [AwsPlatformConfig](docs/AwsPlatformConfig.md)
+ - [AwsPlatformConfigOneOf](docs/AwsPlatformConfigOneOf.md)
+ - [AwsPlatformConfigOneOfLambda](docs/AwsPlatformConfigOneOfLambda.md)
+ - [CreateApplicationRequest](docs/CreateApplicationRequest.md)
+ - [CreateApplicationSuccess](docs/CreateApplicationSuccess.md)
+ - [CreateUserFailure](docs/CreateUserFailure.md)
+ - [CreateUserFailureOneOf](docs/CreateUserFailureOneOf.md)
+ - [CreateUserFailureOneOf1](docs/CreateUserFailureOneOf1.md)
+ - [CreateUserFailureOneOfEmailAlreadyRegistered](docs/CreateUserFailureOneOfEmailAlreadyRegistered.md)
  - [CreateUserRequest](docs/CreateUserRequest.md)
  - [CreateUserSuccess](docs/CreateUserSuccess.md)
+ - [CreateWorkspaceRequest](docs/CreateWorkspaceRequest.md)
+ - [CreateWorkspaceSuccess](docs/CreateWorkspaceSuccess.md)
  - [HeartbeatController200Response](docs/HeartbeatController200Response.md)
- - [HeartbeatResponse](docs/HeartbeatResponse.md)
+ - [ListApplicationsSuccess](docs/ListApplicationsSuccess.md)
  - [LoginRequest](docs/LoginRequest.md)
  - [LoginSuccess](docs/LoginSuccess.md)
+ - [UpdateWorkspaceRequest](docs/UpdateWorkspaceRequest.md)
+ - [WebServiceConfig](docs/WebServiceConfig.md)
+ - [WebServiceConfigOneOf](docs/WebServiceConfigOneOf.md)
+ - [WorkspaceDetails](docs/WorkspaceDetails.md)
+ - [WorkspaceListSuccess](docs/WorkspaceListSuccess.md)
+ - [WorkspaceSummary](docs/WorkspaceSummary.md)
 
 
 To get access to the crate's generated documentation, use:

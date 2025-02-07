@@ -17,7 +17,9 @@
   "paths": {
     "/api/v1/heartbeat": {
       "get": {
-        "tags": [],
+        "tags": [
+          "Heartbeat"
+        ],
         "operationId": "heartbeat_controller",
         "responses": {
           "200": {
@@ -39,15 +41,16 @@
               }
             }
           }
-        }
+        },
+        "security": []
       }
     },
     "/api/v1/users": {
       "post": {
         "tags": [
-          "create"
+          "Users"
         ],
-        "operationId": "create",
+        "operationId": "Create User",
         "requestBody": {
           "content": {
             "application/json": {
@@ -60,7 +63,7 @@
         },
         "responses": {
           "201": {
-            "description": "",
+            "description": "User created",
             "content": {
               "application/json": {
                 "schema": {
@@ -68,16 +71,30 @@
                 }
               }
             }
+          },
+          "422": {
+            "description": "Create user failed due to invalid data",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CreateUserFailure"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Create user failed due to internal error"
           }
-        }
+        },
+        "security": []
       }
     },
     "/api/v1/users/login": {
       "post": {
         "tags": [
-          "login"
+          "Users"
         ],
-        "operationId": "login",
+        "operationId": "Login",
         "requestBody": {
           "content": {
             "application/json": {
@@ -98,6 +115,262 @@
                 }
               }
             }
+          },
+          "403": {
+            "description": "Failed login"
+          },
+          "500": {
+            "description": "Internal error"
+          }
+        },
+        "security": []
+      }
+    },
+    "/api/v1/workspaces": {
+      "get": {
+        "tags": [
+          "Workspaces"
+        ],
+        "operationId": "List Workspaces",
+        "responses": {
+          "200": {
+            "description": "List of workspaces",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/WorkspaceListSuccess"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal error"
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "Workspaces"
+        ],
+        "operationId": "Create Workspace",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateWorkspaceRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Workspace details by id",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CreateWorkspaceSuccess"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal error"
+          }
+        }
+      }
+    },
+    "/api/v1/workspaces/{id}": {
+      "get": {
+        "tags": [
+          "Workspaces"
+        ],
+        "operationId": "Read Workspace",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "The workspace's id",
+            "required": true,
+            "schema": {
+              "$ref": "#/components/schemas/WorkspaceId"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Workspace details",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/WorkspaceDetails"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal error"
+          }
+        }
+      },
+      "patch": {
+        "tags": [
+          "Workspaces"
+        ],
+        "operationId": "Update Workspace",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "The workspace's id",
+            "required": true,
+            "schema": {
+              "$ref": "#/components/schemas/WorkspaceId"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UpdateWorkspaceRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Details of the updated Workspace",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/WorkspaceDetails"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal error"
+          }
+        }
+      }
+    },
+    "/api/v1/workspaces/{workspace_id}/applications": {
+      "get": {
+        "tags": [
+          "Applications"
+        ],
+        "operationId": "List Applications",
+        "parameters": [
+          {
+            "name": "workspace_id",
+            "in": "path",
+            "description": "The workspace's id",
+            "required": true,
+            "schema": {
+              "$ref": "#/components/schemas/WorkspaceId"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "List of Applications",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ListApplicationsSuccess"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal error"
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "Applications"
+        ],
+        "operationId": "Create Application",
+        "parameters": [
+          {
+            "name": "workspace_id",
+            "in": "path",
+            "description": "The workspace's id",
+            "required": true,
+            "schema": {
+              "$ref": "#/components/schemas/WorkspaceId"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateApplicationRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Workspace details by id",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CreateApplicationSuccess"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal error"
+          }
+        }
+      }
+    },
+    "/api/v1/workspaces/{workspace_id}/applications/{application_id}": {
+      "get": {
+        "tags": [
+          "Applications"
+        ],
+        "operationId": "Get Application",
+        "parameters": [
+          {
+            "name": "workspace_id",
+            "in": "path",
+            "description": "The workspace's id",
+            "required": true,
+            "schema": {
+              "$ref": "#/components/schemas/WorkspaceId"
+            }
+          },
+          {
+            "name": "application_id",
+            "in": "path",
+            "description": "The application's id",
+            "required": true,
+            "schema": {
+              "$ref": "#/components/schemas/AppId"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Application details",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApplicationDetails"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal error"
           }
         }
       }
@@ -105,8 +378,268 @@
   },
   "components": {
     "schemas": {
+      "AppId": {
+        "type": "string",
+        "format": "uuid"
+      },
+      "ApplicationConfig": {
+        "oneOf": [
+          {
+            "type": "object",
+            "required": [
+              "web_service"
+            ],
+            "properties": {
+              "web_service": {
+                "$ref": "#/components/schemas/WebServiceConfig"
+              }
+            }
+          }
+        ]
+      },
+      "ApplicationDetails": {
+        "type": "object",
+        "required": [
+          "id",
+          "app_type",
+          "display_name",
+          "deployments",
+          "created_at",
+          "updated_at"
+        ],
+        "properties": {
+          "app_type": {
+            "$ref": "#/components/schemas/ApplicationType"
+          },
+          "created_at": {
+            "type": "string"
+          },
+          "deployments": {
+            "type": "array",
+            "items": {
+              "type": "object"
+            }
+          },
+          "display_name": {
+            "type": "string"
+          },
+          "id": {
+            "$ref": "#/components/schemas/AppId"
+          },
+          "updated_at": {
+            "type": "string"
+          }
+        }
+      },
+      "ApplicationSummary": {
+        "type": "object",
+        "required": [
+          "id",
+          "app_type",
+          "display_name",
+          "created_at",
+          "updated_at"
+        ],
+        "properties": {
+          "app_type": {
+            "$ref": "#/components/schemas/ApplicationType"
+          },
+          "created_at": {
+            "type": "string"
+          },
+          "display_name": {
+            "type": "string"
+          },
+          "id": {
+            "$ref": "#/components/schemas/AppId"
+          },
+          "updated_at": {
+            "type": "string"
+          }
+        }
+      },
+      "ApplicationType": {
+        "type": "string",
+        "description": "An identifier of what kind of application we're tracking.",
+        "enum": [
+          "web_service"
+        ]
+      },
+      "AwsConfig": {
+        "type": "object",
+        "required": [
+          "region",
+          "ingress",
+          "platform",
+          "monitor"
+        ],
+        "properties": {
+          "ingress": {
+            "$ref": "#/components/schemas/AwsIngressConfig"
+          },
+          "monitor": {
+            "$ref": "#/components/schemas/AwsMonitorConfig"
+          },
+          "platform": {
+            "$ref": "#/components/schemas/AwsPlatformConfig"
+          },
+          "region": {
+            "type": "string"
+          }
+        }
+      },
+      "AwsIngressConfig": {
+        "oneOf": [
+          {
+            "type": "object",
+            "required": [
+              "rest_api_gateway_config"
+            ],
+            "properties": {
+              "rest_api_gateway_config": {
+                "type": "object",
+                "required": [
+                  "gateway_name",
+                  "stage_name",
+                  "resource_path",
+                  "resource_method"
+                ],
+                "properties": {
+                  "gateway_name": {
+                    "type": "string"
+                  },
+                  "resource_method": {
+                    "type": "string"
+                  },
+                  "resource_path": {
+                    "type": "string"
+                  },
+                  "stage_name": {
+                    "type": "string"
+                  }
+                }
+              }
+            }
+          }
+        ]
+      },
+      "AwsMonitorConfig": {
+        "type": "string",
+        "enum": [
+          "cloudwatch_metrics"
+        ]
+      },
+      "AwsPlatformConfig": {
+        "oneOf": [
+          {
+            "type": "object",
+            "required": [
+              "lambda"
+            ],
+            "properties": {
+              "lambda": {
+                "type": "object",
+                "required": [
+                  "name"
+                ],
+                "properties": {
+                  "name": {
+                    "type": "string"
+                  }
+                }
+              }
+            }
+          }
+        ]
+      },
       "CleartextPassword": {
         "type": "string"
+      },
+      "CreateApplicationRequest": {
+        "type": "object",
+        "required": [
+          "display_name",
+          "config"
+        ],
+        "properties": {
+          "config": {
+            "$ref": "#/components/schemas/ApplicationConfig"
+          },
+          "display_name": {
+            "type": "string"
+          }
+        }
+      },
+      "CreateApplicationSuccess": {
+        "type": "object",
+        "required": [
+          "application"
+        ],
+        "properties": {
+          "application": {
+            "$ref": "#/components/schemas/ApplicationSummary"
+          }
+        }
+      },
+      "CreateUserFailure": {
+        "oneOf": [
+          {
+            "type": "object",
+            "description": "When the email address is already associated with an account.",
+            "required": [
+              "EmailAlreadyRegistered"
+            ],
+            "properties": {
+              "EmailAlreadyRegistered": {
+                "type": "object",
+                "description": "When the email address is already associated with an account.",
+                "required": [
+                  "email"
+                ],
+                "properties": {
+                  "email": {
+                    "$ref": "#/components/schemas/Email"
+                  }
+                }
+              }
+            }
+          },
+          {
+            "type": "string",
+            "description": "When the user's password is not strong enough.",
+            "enum": [
+              "PasswordTooWeak"
+            ]
+          },
+          {
+            "type": "string",
+            "description": "When the server encountered an internal error.",
+            "enum": [
+              "InternalError"
+            ]
+          },
+          {
+            "type": "object",
+            "description": "When the user's email or account name are illegal.",
+            "required": [
+              "IllegalUserDetails"
+            ],
+            "properties": {
+              "IllegalUserDetails": {
+                "type": "string",
+                "description": "When the user's email or account name are illegal."
+              }
+            }
+          },
+          {
+            "type": "string",
+            "description": "When the user's password matches their account name or email.",
+            "enum": [
+              "PasswordTooObvious"
+            ]
+          }
+        ],
+        "description": "Failure to create a new users.\nCorresponds to POST /users/"
       },
       "CreateUserRequest": {
         "type": "object",
@@ -147,18 +680,56 @@
           }
         }
       },
+      "CreateWorkspaceRequest": {
+        "type": "object",
+        "required": [
+          "display_name"
+        ],
+        "properties": {
+          "display_name": {
+            "type": "string"
+          }
+        }
+      },
+      "CreateWorkspaceSuccess": {
+        "type": "object",
+        "required": [
+          "id",
+          "display_name",
+          "created_at",
+          "updated_at"
+        ],
+        "properties": {
+          "created_at": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "display_name": {
+            "type": "string"
+          },
+          "id": {
+            "$ref": "#/components/schemas/WorkspaceId"
+          },
+          "updated_at": {
+            "type": "string",
+            "format": "date-time"
+          }
+        }
+      },
       "Email": {
         "type": "string"
       },
-      "HeartbeatResponse": {
+      "ListApplicationsSuccess": {
         "type": "object",
-        "description": "A Heartbeat response indicates the status of the server.\nIn almost every conceivable circumstance, the response should\nbe a success.",
         "required": [
-          "ok"
+          "applications"
         ],
         "properties": {
-          "ok": {
-            "type": "boolean"
+          "applications": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/ApplicationSummary"
+            }
           }
         }
       },
@@ -194,60 +765,124 @@
             "type": "string"
           }
         }
-      }
-    },
-    "responses": {
-      "CreateUserSuccess": {
-        "description": "Successful user creation response body",
-        "content": {
-          "application/json": {
-            "schema": {
-              "type": "object",
-              "description": "Successful user creation response body",
-              "required": [
-                "email",
-                "created_at",
-                "jwt"
-              ],
-              "properties": {
-                "created_at": {
-                  "type": "string",
-                  "format": "date-time"
-                },
-                "email": {
-                  "$ref": "#/components/schemas/Email"
-                },
-                "jwt": {
-                  "type": "string"
-                }
+      },
+      "UpdateWorkspaceRequest": {
+        "type": "object",
+        "properties": {
+          "display_name": {
+            "type": [
+              "string",
+              "null"
+            ]
+          }
+        }
+      },
+      "WebServiceConfig": {
+        "oneOf": [
+          {
+            "type": "object",
+            "required": [
+              "aws"
+            ],
+            "properties": {
+              "aws": {
+                "$ref": "#/components/schemas/AwsConfig"
               }
+            }
+          }
+        ]
+      },
+      "WorkspaceDetails": {
+        "type": "object",
+        "description": "Details about a particular workspace.",
+        "required": [
+          "id",
+          "display_name",
+          "applications",
+          "created_at",
+          "updated_at"
+        ],
+        "properties": {
+          "applications": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/ApplicationSummary"
+            }
+          },
+          "created_at": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "display_name": {
+            "type": "string"
+          },
+          "id": {
+            "$ref": "#/components/schemas/WorkspaceId"
+          },
+          "updated_at": {
+            "type": "string",
+            "format": "date-time"
+          }
+        }
+      },
+      "WorkspaceId": {
+        "type": "string",
+        "format": "uuid"
+      },
+      "WorkspaceListSuccess": {
+        "type": "object",
+        "required": [
+          "workspaces"
+        ],
+        "properties": {
+          "workspaces": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/WorkspaceSummary"
             }
           }
         }
       },
-      "LoginSuccess": {
-        "description": "Successful login response payload",
-        "content": {
-          "application/json": {
-            "schema": {
-              "type": "object",
-              "description": "Successful login response payload",
-              "required": [
-                "email",
-                "jwt"
-              ],
-              "properties": {
-                "email": {
-                  "$ref": "#/components/schemas/Email"
-                },
-                "jwt": {
-                  "type": "string"
-                }
-              }
-            }
+      "WorkspaceSummary": {
+        "type": "object",
+        "required": [
+          "id",
+          "display_name",
+          "created_at"
+        ],
+        "properties": {
+          "created_at": {
+            "type": "string"
+          },
+          "display_name": {
+            "type": "string"
+          },
+          "id": {
+            "$ref": "#/components/schemas/WorkspaceId"
           }
         }
       }
+    },
+    "securitySchemes": {
+      "bearer_auth": {
+        "type": "http",
+        "scheme": "bearer"
+      }
     }
-  }
+  },
+  "security": [
+    {
+      "bearer_auth": []
+    }
+  ],
+  "tags": [
+    {
+      "name": "Workspaces",
+      "description": "Workspaces"
+    },
+    {
+      "name": "Applications",
+      "description": "Applications"
+    }
+  ]
 }

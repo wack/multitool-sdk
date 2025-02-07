@@ -101,10 +101,15 @@ Please follow the [installation](#installation) instruction and execute the foll
 ```javascript
 var MultiTool = require('multi_tool');
 
+var defaultClient = MultiTool.ApiClient.instance;
+// Configure Bearer access token for authorization: bearer_auth
+var bearer_auth = defaultClient.authentications['bearer_auth'];
+bearer_auth.accessToken = "YOUR ACCESS TOKEN"
 
-var api = new MultiTool.CreateApi()
-var createUserRequest = new MultiTool.CreateUserRequest(); // {CreateUserRequest} 
-api.create(createUserRequest).then(function(data) {
+var api = new MultiTool.ApplicationsApi()
+var createApplicationRequest = new MultiTool.CreateApplicationRequest(); // {CreateApplicationRequest} 
+var workspaceId = "workspaceId_example"; // {String} The workspace's id
+api.createApplication(createApplicationRequest, workspaceId).then(function(data) {
   console.log('API called successfully. Returned data: ' + data);
 }, function(error) {
   console.error(error);
@@ -119,22 +124,60 @@ All URIs are relative to *http://localhost:8000*
 
 Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
-*MultiTool.CreateApi* | [**create**](docs/CreateApi.md#create) | **POST** /api/v1/users | 
-*MultiTool.DefaultApi* | [**heartbeatController**](docs/DefaultApi.md#heartbeatController) | **GET** /api/v1/heartbeat | 
-*MultiTool.LoginApi* | [**login**](docs/LoginApi.md#login) | **POST** /api/v1/users/login | 
+*MultiTool.ApplicationsApi* | [**createApplication**](docs/ApplicationsApi.md#createApplication) | **POST** /api/v1/workspaces/{workspace_id}/applications | 
+*MultiTool.ApplicationsApi* | [**getApplication**](docs/ApplicationsApi.md#getApplication) | **GET** /api/v1/workspaces/{workspace_id}/applications/{application_id} | 
+*MultiTool.ApplicationsApi* | [**listApplications**](docs/ApplicationsApi.md#listApplications) | **GET** /api/v1/workspaces/{workspace_id}/applications | 
+*MultiTool.HeartbeatApi* | [**heartbeatController**](docs/HeartbeatApi.md#heartbeatController) | **GET** /api/v1/heartbeat | 
+*MultiTool.UsersApi* | [**createUser**](docs/UsersApi.md#createUser) | **POST** /api/v1/users | 
+*MultiTool.UsersApi* | [**login**](docs/UsersApi.md#login) | **POST** /api/v1/users/login | 
+*MultiTool.WorkspacesApi* | [**createWorkspace**](docs/WorkspacesApi.md#createWorkspace) | **POST** /api/v1/workspaces | 
+*MultiTool.WorkspacesApi* | [**listWorkspaces**](docs/WorkspacesApi.md#listWorkspaces) | **GET** /api/v1/workspaces | 
+*MultiTool.WorkspacesApi* | [**readWorkspace**](docs/WorkspacesApi.md#readWorkspace) | **GET** /api/v1/workspaces/{id} | 
+*MultiTool.WorkspacesApi* | [**updateWorkspace**](docs/WorkspacesApi.md#updateWorkspace) | **PATCH** /api/v1/workspaces/{id} | 
 
 
 ## Documentation for Models
 
+ - [MultiTool.ApplicationConfig](docs/ApplicationConfig.md)
+ - [MultiTool.ApplicationConfigOneOf](docs/ApplicationConfigOneOf.md)
+ - [MultiTool.ApplicationDetails](docs/ApplicationDetails.md)
+ - [MultiTool.ApplicationSummary](docs/ApplicationSummary.md)
+ - [MultiTool.ApplicationType](docs/ApplicationType.md)
+ - [MultiTool.AwsConfig](docs/AwsConfig.md)
+ - [MultiTool.AwsIngressConfig](docs/AwsIngressConfig.md)
+ - [MultiTool.AwsIngressConfigOneOf](docs/AwsIngressConfigOneOf.md)
+ - [MultiTool.AwsIngressConfigOneOfRestApiGatewayConfig](docs/AwsIngressConfigOneOfRestApiGatewayConfig.md)
+ - [MultiTool.AwsMonitorConfig](docs/AwsMonitorConfig.md)
+ - [MultiTool.AwsPlatformConfig](docs/AwsPlatformConfig.md)
+ - [MultiTool.AwsPlatformConfigOneOf](docs/AwsPlatformConfigOneOf.md)
+ - [MultiTool.AwsPlatformConfigOneOfLambda](docs/AwsPlatformConfigOneOfLambda.md)
+ - [MultiTool.CreateApplicationRequest](docs/CreateApplicationRequest.md)
+ - [MultiTool.CreateApplicationSuccess](docs/CreateApplicationSuccess.md)
+ - [MultiTool.CreateUserFailure](docs/CreateUserFailure.md)
+ - [MultiTool.CreateUserFailureOneOf](docs/CreateUserFailureOneOf.md)
+ - [MultiTool.CreateUserFailureOneOf1](docs/CreateUserFailureOneOf1.md)
+ - [MultiTool.CreateUserFailureOneOfEmailAlreadyRegistered](docs/CreateUserFailureOneOfEmailAlreadyRegistered.md)
  - [MultiTool.CreateUserRequest](docs/CreateUserRequest.md)
  - [MultiTool.CreateUserSuccess](docs/CreateUserSuccess.md)
+ - [MultiTool.CreateWorkspaceRequest](docs/CreateWorkspaceRequest.md)
+ - [MultiTool.CreateWorkspaceSuccess](docs/CreateWorkspaceSuccess.md)
  - [MultiTool.HeartbeatController200Response](docs/HeartbeatController200Response.md)
- - [MultiTool.HeartbeatResponse](docs/HeartbeatResponse.md)
+ - [MultiTool.ListApplicationsSuccess](docs/ListApplicationsSuccess.md)
  - [MultiTool.LoginRequest](docs/LoginRequest.md)
  - [MultiTool.LoginSuccess](docs/LoginSuccess.md)
+ - [MultiTool.UpdateWorkspaceRequest](docs/UpdateWorkspaceRequest.md)
+ - [MultiTool.WebServiceConfig](docs/WebServiceConfig.md)
+ - [MultiTool.WebServiceConfigOneOf](docs/WebServiceConfigOneOf.md)
+ - [MultiTool.WorkspaceDetails](docs/WorkspaceDetails.md)
+ - [MultiTool.WorkspaceListSuccess](docs/WorkspaceListSuccess.md)
+ - [MultiTool.WorkspaceSummary](docs/WorkspaceSummary.md)
 
 
 ## Documentation for Authorization
 
-Endpoints do not require authorization.
+
+Authentication schemes defined for the API:
+### bearer_auth
+
+- **Type**: Bearer authentication
 

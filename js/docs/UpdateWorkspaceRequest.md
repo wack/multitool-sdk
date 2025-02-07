@@ -1,0 +1,9 @@
+# MultiTool.UpdateWorkspaceRequest
+
+## Properties
+
+Name | Type | Description | Notes
+------------ | ------------- | ------------- | -------------
+**displayName** | **String** |  | [optional] 
+
+
