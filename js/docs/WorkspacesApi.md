@@ -59,7 +59,7 @@ Name | Type | Description  | Notes
 
 ## listWorkspaces
 
-> ListWorkspaceSuccess listWorkspaces()
+> ListWorkspaceSuccess listWorkspaces(opts)
 
 
 
@@ -73,7 +73,10 @@ let bearer_auth = defaultClient.authentications['bearer_auth'];
 bearer_auth.accessToken = "YOUR ACCESS TOKEN"
 
 let apiInstance = new MultiTool.WorkspacesApi();
-apiInstance.listWorkspaces().then((data) => {
+let opts = {
+  'displayName': "displayName_example" // String | Only return workspaces with this name.
+};
+apiInstance.listWorkspaces(opts).then((data) => {
   console.log('API called successfully. Returned data: ' + data);
 }, (error) => {
   console.error(error);
@@ -83,7 +86,10 @@ apiInstance.listWorkspaces().then((data) => {
 
 ### Parameters
 
-This endpoint does not need any parameter.
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **displayName** | **String**| Only return workspaces with this name. | [optional] 
 
 ### Return type
 

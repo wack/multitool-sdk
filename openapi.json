@@ -133,6 +133,20 @@
           "Workspaces"
         ],
         "operationId": "List Workspaces",
+        "parameters": [
+          {
+            "name": "display_name",
+            "in": "query",
+            "description": "Only return workspaces with this name.",
+            "required": false,
+            "schema": {
+              "type": [
+                "string",
+                "null"
+              ]
+            }
+          }
+        ],
         "responses": {
           "200": {
             "description": "List of workspaces",

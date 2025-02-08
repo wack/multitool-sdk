@@ -83,14 +83,18 @@ export default class WorkspacesApi {
 
 
     /**
+     * @param {Object} opts Optional parameters
+     * @param {String} [displayName] Only return workspaces with this name.
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:model/ListWorkspaceSuccess} and HTTP response
      */
-    listWorkspacesWithHttpInfo() {
+    listWorkspacesWithHttpInfo(opts) {
+      opts = opts || {};
       let postBody = null;
 
       let pathParams = {
       };
       let queryParams = {
+        'display_name': opts['displayName']
       };
       let headerParams = {
       };
@@ -109,10 +113,12 @@ export default class WorkspacesApi {
     }
 
     /**
+     * @param {Object} opts Optional parameters
+     * @param {String} opts.displayName Only return workspaces with this name.
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/ListWorkspaceSuccess}
      */
-    listWorkspaces() {
-      return this.listWorkspacesWithHttpInfo()
+    listWorkspaces(opts) {
+      return this.listWorkspacesWithHttpInfo(opts)
         .then(function(response_and_data) {
           return response_and_data.data;
         });

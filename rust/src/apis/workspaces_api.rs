@@ -79,7 +79,7 @@ pub async fn create_workspace(configuration: &configuration::Configuration, crea
     }
 }
 
-pub async fn list_workspaces(configuration: &configuration::Configuration, ) -> Result<models::ListWorkspaceSuccess, Error<ListWorkspacesError>> {
+pub async fn list_workspaces(configuration: &configuration::Configuration, display_name: Option<&str>) -> Result<models::ListWorkspaceSuccess, Error<ListWorkspacesError>> {
     let local_var_configuration = configuration;
 
     let local_var_client = &local_var_configuration.client;
@@ -87,6 +87,9 @@ pub async fn list_workspaces(configuration: &configuration::Configuration, ) -> 
     let local_var_uri_str = format!("{}/api/v1/workspaces", local_var_configuration.base_path);
     let mut local_var_req_builder = local_var_client.request(reqwest::Method::GET, local_var_uri_str.as_str());
 
+    if let Some(ref local_var_str) = display_name {
+        local_var_req_builder = local_var_req_builder.query(&[("display_name", &local_var_str.to_string())]);
+    }
     if let Some(ref local_var_user_agent) = local_var_configuration.user_agent {
         local_var_req_builder = local_var_req_builder.header(reqwest::header::USER_AGENT, local_var_user_agent.clone());
     }
