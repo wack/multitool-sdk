@@ -1,8 +1,8 @@
 {
   "name": "multi_tool",
   "version": "0.1.0",
-  "description": "MultiTool",
-  "license": "Unlicense",
+  "description": "MultiTool backend API",
+  "license": "All Rights Reserved",
   "main": "dist/index.js",
   "scripts": {
     "build": "babel src -d dist",

@@ -59,7 +59,7 @@ Name | Type | Description  | Notes
 
 ## listWorkspaces
 
-> WorkspaceListSuccess listWorkspaces()
+> ListWorkspaceSuccess listWorkspaces()
 
 
 
@@ -87,7 +87,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-[**WorkspaceListSuccess**](WorkspaceListSuccess.md)
+[**ListWorkspaceSuccess**](ListWorkspaceSuccess.md)
 
 ### Authorization
 

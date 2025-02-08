@@ -1,9 +1,9 @@
-# MultiTool.CreateUserFailureOneOfEmailAlreadyRegistered
+# MultiTool.ListWorkspaceSuccess
 
 ## Properties
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**email** | **String** |  | 
+**workspaces** | [**[WorkspaceSummary]**](WorkspaceSummary.md) |  | 
 
 

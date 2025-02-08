@@ -1,6 +1,6 @@
 # Rust API client for openapi
 
-MultiTool
+MultiTool backend API
 
 
 ## Overview
@@ -27,6 +27,7 @@ All URIs are relative to *http://localhost:8000*
 Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
 *ApplicationsApi* | [**create_application**](docs/ApplicationsApi.md#create_application) | **POST** /api/v1/workspaces/{workspace_id}/applications | 
+*ApplicationsApi* | [**delete_application**](docs/ApplicationsApi.md#delete_application) | **DELETE** /api/v1/workspaces/{workspace_id}/applications/{application_id} | 
 *ApplicationsApi* | [**get_application**](docs/ApplicationsApi.md#get_application) | **GET** /api/v1/workspaces/{workspace_id}/applications/{application_id} | 
 *ApplicationsApi* | [**list_applications**](docs/ApplicationsApi.md#list_applications) | **GET** /api/v1/workspaces/{workspace_id}/applications | 
 *HeartbeatApi* | [**heartbeat_controller**](docs/HeartbeatApi.md#heartbeat_controller) | **GET** /api/v1/heartbeat | 
@@ -55,23 +56,20 @@ Class | Method | HTTP request | Description
  - [AwsPlatformConfigOneOfLambda](docs/AwsPlatformConfigOneOfLambda.md)
  - [CreateApplicationRequest](docs/CreateApplicationRequest.md)
  - [CreateApplicationSuccess](docs/CreateApplicationSuccess.md)
- - [CreateUserFailure](docs/CreateUserFailure.md)
- - [CreateUserFailureOneOf](docs/CreateUserFailureOneOf.md)
- - [CreateUserFailureOneOf1](docs/CreateUserFailureOneOf1.md)
- - [CreateUserFailureOneOfEmailAlreadyRegistered](docs/CreateUserFailureOneOfEmailAlreadyRegistered.md)
  - [CreateUserRequest](docs/CreateUserRequest.md)
  - [CreateUserSuccess](docs/CreateUserSuccess.md)
  - [CreateWorkspaceRequest](docs/CreateWorkspaceRequest.md)
  - [CreateWorkspaceSuccess](docs/CreateWorkspaceSuccess.md)
+ - [ErrorResponse](docs/ErrorResponse.md)
  - [HeartbeatController200Response](docs/HeartbeatController200Response.md)
  - [ListApplicationsSuccess](docs/ListApplicationsSuccess.md)
+ - [ListWorkspaceSuccess](docs/ListWorkspaceSuccess.md)
  - [LoginRequest](docs/LoginRequest.md)
  - [LoginSuccess](docs/LoginSuccess.md)
  - [UpdateWorkspaceRequest](docs/UpdateWorkspaceRequest.md)
  - [WebServiceConfig](docs/WebServiceConfig.md)
  - [WebServiceConfigOneOf](docs/WebServiceConfigOneOf.md)
  - [WorkspaceDetails](docs/WorkspaceDetails.md)
- - [WorkspaceListSuccess](docs/WorkspaceListSuccess.md)
  - [WorkspaceSummary](docs/WorkspaceSummary.md)
 
 

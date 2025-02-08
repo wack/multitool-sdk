@@ -1,10 +1,10 @@
-# CreateUserFailureOneOf
+# ErrorResponse
 
 ## Properties
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**email_already_registered** | [**models::CreateUserFailureOneOfEmailAlreadyRegistered**](CreateUserFailure_oneOf_EmailAlreadyRegistered.md) |  | 
+**errors** | **Vec<String>** |  | 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

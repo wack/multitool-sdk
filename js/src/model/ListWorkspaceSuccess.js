@@ -1,6 +1,6 @@
 /**
  * MultiTool
- * MultiTool
+ * MultiTool backend API
  *
  * The version of the OpenAPI document: 0.1.0
  * 
@@ -15,19 +15,19 @@ import ApiClient from '../ApiClient';
 import WorkspaceSummary from './WorkspaceSummary';
 
 /**
- * The WorkspaceListSuccess model module.
- * @module model/WorkspaceListSuccess
+ * The ListWorkspaceSuccess model module.
+ * @module model/ListWorkspaceSuccess
  * @version 0.1.0
  */
-class WorkspaceListSuccess {
+class ListWorkspaceSuccess {
     /**
-     * Constructs a new <code>WorkspaceListSuccess</code>.
-     * @alias module:model/WorkspaceListSuccess
+     * Constructs a new <code>ListWorkspaceSuccess</code>.
+     * @alias module:model/ListWorkspaceSuccess
      * @param workspaces {Array.<module:model/WorkspaceSummary>} 
      */
     constructor(workspaces) { 
         
-        WorkspaceListSuccess.initialize(this, workspaces);
+        ListWorkspaceSuccess.initialize(this, workspaces);
     }
 
     /**
@@ -40,15 +40,15 @@ class WorkspaceListSuccess {
     }
 
     /**
-     * Constructs a <code>WorkspaceListSuccess</code> from a plain JavaScript object, optionally creating a new instance.
+     * Constructs a <code>ListWorkspaceSuccess</code> from a plain JavaScript object, optionally creating a new instance.
      * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
      * @param {Object} data The plain JavaScript object bearing properties of interest.
-     * @param {module:model/WorkspaceListSuccess} obj Optional instance to populate.
-     * @return {module:model/WorkspaceListSuccess} The populated <code>WorkspaceListSuccess</code> instance.
+     * @param {module:model/ListWorkspaceSuccess} obj Optional instance to populate.
+     * @return {module:model/ListWorkspaceSuccess} The populated <code>ListWorkspaceSuccess</code> instance.
      */
     static constructFromObject(data, obj) {
         if (data) {
-            obj = obj || new WorkspaceListSuccess();
+            obj = obj || new ListWorkspaceSuccess();
 
             if (data.hasOwnProperty('workspaces')) {
                 obj['workspaces'] = ApiClient.convertToType(data['workspaces'], [WorkspaceSummary]);
@@ -58,13 +58,13 @@ class WorkspaceListSuccess {
     }
 
     /**
-     * Validates the JSON data with respect to <code>WorkspaceListSuccess</code>.
+     * Validates the JSON data with respect to <code>ListWorkspaceSuccess</code>.
      * @param {Object} data The plain JavaScript object bearing properties of interest.
-     * @return {boolean} to indicate whether the JSON data is valid with respect to <code>WorkspaceListSuccess</code>.
+     * @return {boolean} to indicate whether the JSON data is valid with respect to <code>ListWorkspaceSuccess</code>.
      */
     static validateJSON(data) {
         // check to make sure all required properties are present in the JSON string
-        for (const property of WorkspaceListSuccess.RequiredProperties) {
+        for (const property of ListWorkspaceSuccess.RequiredProperties) {
             if (!data.hasOwnProperty(property)) {
                 throw new Error("The required field `" + property + "` is not found in the JSON data: " + JSON.stringify(data));
             }
@@ -86,17 +86,17 @@ class WorkspaceListSuccess {
 
 }
 
-WorkspaceListSuccess.RequiredProperties = ["workspaces"];
+ListWorkspaceSuccess.RequiredProperties = ["workspaces"];
 
 /**
  * @member {Array.<module:model/WorkspaceSummary>} workspaces
  */
-WorkspaceListSuccess.prototype['workspaces'] = undefined;
+ListWorkspaceSuccess.prototype['workspaces'] = undefined;
 
 
 
 
 
 
-export default WorkspaceListSuccess;
+export default ListWorkspaceSuccess;
 

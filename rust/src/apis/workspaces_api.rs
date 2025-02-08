@@ -1,7 +1,7 @@
 /*
  * MultiTool
  *
- * MultiTool
+ * MultiTool backend API
  *
  * The version of the OpenAPI document: 0.1.0
  * 
@@ -79,7 +79,7 @@ pub async fn create_workspace(configuration: &configuration::Configuration, crea
     }
 }
 
-pub async fn list_workspaces(configuration: &configuration::Configuration, ) -> Result<models::WorkspaceListSuccess, Error<ListWorkspacesError>> {
+pub async fn list_workspaces(configuration: &configuration::Configuration, ) -> Result<models::ListWorkspaceSuccess, Error<ListWorkspacesError>> {
     let local_var_configuration = configuration;
 
     let local_var_client = &local_var_configuration.client;

@@ -1,4 +1,4 @@
-# WorkspaceListSuccess
+# ListWorkspaceSuccess
 
 ## Properties
 

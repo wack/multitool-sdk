@@ -1,6 +1,6 @@
 /**
  * MultiTool
- * MultiTool
+ * MultiTool backend API
  *
  * The version of the OpenAPI document: 0.1.0
  * 
@@ -13,9 +13,9 @@
 
 
 import ApiClient from "../ApiClient";
-import CreateUserFailure from '../model/CreateUserFailure';
 import CreateUserRequest from '../model/CreateUserRequest';
 import CreateUserSuccess from '../model/CreateUserSuccess';
+import ErrorResponse from '../model/ErrorResponse';
 import LoginRequest from '../model/LoginRequest';
 import LoginSuccess from '../model/LoginSuccess';
 

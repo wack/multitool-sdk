@@ -1,7 +1,7 @@
 /*
  * MultiTool
  *
- * MultiTool
+ * MultiTool backend API
  *
  * The version of the OpenAPI document: 0.1.0
  * 
@@ -19,7 +19,7 @@ use super::{Error, configuration};
 #[derive(Debug, Clone, Serialize, Deserialize)]
 #[serde(untagged)]
 pub enum CreateUserError {
-    Status422(models::CreateUserFailure),
+    Status422(models::ErrorResponse),
     Status500(),
     UnknownValue(serde_json::Value),
 }

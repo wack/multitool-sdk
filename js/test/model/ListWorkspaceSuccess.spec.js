@@ -1,6 +1,6 @@
 /**
  * MultiTool
- * MultiTool
+ * MultiTool backend API
  *
  * The version of the OpenAPI document: 0.1.0
  * 
@@ -28,7 +28,7 @@
   var instance;
 
   beforeEach(function() {
-    instance = new MultiTool.WorkspaceListSuccess();
+    instance = new MultiTool.ListWorkspaceSuccess();
   });
 
   var getProperty = function(object, getter, property) {
@@ -47,16 +47,16 @@
       object[property] = value;
   }
 
-  describe('WorkspaceListSuccess', function() {
-    it('should create an instance of WorkspaceListSuccess', function() {
-      // uncomment below and update the code to test WorkspaceListSuccess
-      //var instance = new MultiTool.WorkspaceListSuccess();
-      //expect(instance).to.be.a(MultiTool.WorkspaceListSuccess);
+  describe('ListWorkspaceSuccess', function() {
+    it('should create an instance of ListWorkspaceSuccess', function() {
+      // uncomment below and update the code to test ListWorkspaceSuccess
+      //var instance = new MultiTool.ListWorkspaceSuccess();
+      //expect(instance).to.be.a(MultiTool.ListWorkspaceSuccess);
     });
 
     it('should have the property workspaces (base name: "workspaces")', function() {
       // uncomment below and update the code to test the property workspaces
-      //var instance = new MultiTool.WorkspaceListSuccess();
+      //var instance = new MultiTool.ListWorkspaceSuccess();
       //expect(instance).to.be();
     });
 

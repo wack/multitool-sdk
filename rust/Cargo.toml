@@ -2,8 +2,8 @@
 name = "openapi"
 version = "0.1.0"
 authors = ["OpenAPI Generator team and contributors"]
-description = "MultiTool"
-license = ""
+description = "MultiTool backend API"
+license = "All Rights Reserved"
 edition = "2018"
 
 [dependencies]

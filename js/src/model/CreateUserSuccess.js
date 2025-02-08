@@ -1,6 +1,6 @@
 /**
  * MultiTool
- * MultiTool
+ * MultiTool backend API
  *
  * The version of the OpenAPI document: 0.1.0
  * 
@@ -25,11 +25,12 @@ class CreateUserSuccess {
      * @alias module:model/CreateUserSuccess
      * @param createdAt {Date} 
      * @param email {String} 
+     * @param expiresAt {Date} 
      * @param jwt {String} 
      */
-    constructor(createdAt, email, jwt) { 
+    constructor(createdAt, email, expiresAt, jwt) { 
         
-        CreateUserSuccess.initialize(this, createdAt, email, jwt);
+        CreateUserSuccess.initialize(this, createdAt, email, expiresAt, jwt);
     }
 
     /**
@@ -37,9 +38,10 @@ class CreateUserSuccess {
      * This method is used by the constructors of any subclasses, in order to implement multiple inheritance (mix-ins).
      * Only for internal use.
      */
-    static initialize(obj, createdAt, email, jwt) { 
+    static initialize(obj, createdAt, email, expiresAt, jwt) { 
         obj['created_at'] = createdAt;
         obj['email'] = email;
+        obj['expires_at'] = expiresAt;
         obj['jwt'] = jwt;
     }
 
@@ -59,6 +61,9 @@ class CreateUserSuccess {
             }
             if (data.hasOwnProperty('email')) {
                 obj['email'] = ApiClient.convertToType(data['email'], 'String');
+            }
+            if (data.hasOwnProperty('expires_at')) {
+                obj['expires_at'] = ApiClient.convertToType(data['expires_at'], 'Date');
             }
             if (data.hasOwnProperty('jwt')) {
                 obj['jwt'] = ApiClient.convertToType(data['jwt'], 'String');
@@ -94,7 +99,7 @@ class CreateUserSuccess {
 
 }
 
-CreateUserSuccess.RequiredProperties = ["created_at", "email", "jwt"];
+CreateUserSuccess.RequiredProperties = ["created_at", "email", "expires_at", "jwt"];
 
 /**
  * @member {Date} created_at
@@ -105,6 +110,11 @@ CreateUserSuccess.prototype['created_at'] = undefined;
  * @member {String} email
  */
 CreateUserSuccess.prototype['email'] = undefined;
+
+/**
+ * @member {Date} expires_at
+ */
+CreateUserSuccess.prototype['expires_at'] = undefined;
 
 /**
  * @member {String} jwt

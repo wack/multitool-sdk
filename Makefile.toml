@@ -96,7 +96,6 @@ script = [
 '''
 docker run --rm -v "$PWD:/local" \
   openapitools/openapi-generator-cli:v7.4.0 generate \
-  --skip-validate-spec \
   -i /local/openapi.json \
   -g rust \
   -o /local/rust

@@ -1,7 +1,7 @@
 /*
  * MultiTool
  *
- * MultiTool
+ * MultiTool backend API
  *
  * The version of the OpenAPI document: 0.1.0
  * 
@@ -17,16 +17,19 @@ pub struct CreateUserSuccess {
     pub created_at: String,
     #[serde(rename = "email")]
     pub email: String,
+    #[serde(rename = "expires_at")]
+    pub expires_at: String,
     #[serde(rename = "jwt")]
     pub jwt: String,
 }
 
 impl CreateUserSuccess {
     /// Successful user creation response body
-    pub fn new(created_at: String, email: String, jwt: String) -> CreateUserSuccess {
+    pub fn new(created_at: String, email: String, expires_at: String, jwt: String) -> CreateUserSuccess {
         CreateUserSuccess {
             created_at,
             email,
+            expires_at,
             jwt,
         }
     }

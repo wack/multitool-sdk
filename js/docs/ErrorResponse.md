@@ -1,9 +1,9 @@
-# MultiTool.HeartbeatResponse
+# MultiTool.ErrorResponse
 
 ## Properties
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**ok** | **Boolean** |  | 
+**errors** | **[String]** |  | 
 
 

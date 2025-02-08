@@ -1,6 +1,6 @@
 /**
  * MultiTool
- * MultiTool
+ * MultiTool backend API
  *
  * The version of the OpenAPI document: 0.1.0
  * 
@@ -28,23 +28,20 @@ import AwsPlatformConfigOneOf from './model/AwsPlatformConfigOneOf';
 import AwsPlatformConfigOneOfLambda from './model/AwsPlatformConfigOneOfLambda';
 import CreateApplicationRequest from './model/CreateApplicationRequest';
 import CreateApplicationSuccess from './model/CreateApplicationSuccess';
-import CreateUserFailure from './model/CreateUserFailure';
-import CreateUserFailureOneOf from './model/CreateUserFailureOneOf';
-import CreateUserFailureOneOf1 from './model/CreateUserFailureOneOf1';
-import CreateUserFailureOneOfEmailAlreadyRegistered from './model/CreateUserFailureOneOfEmailAlreadyRegistered';
 import CreateUserRequest from './model/CreateUserRequest';
 import CreateUserSuccess from './model/CreateUserSuccess';
 import CreateWorkspaceRequest from './model/CreateWorkspaceRequest';
 import CreateWorkspaceSuccess from './model/CreateWorkspaceSuccess';
+import ErrorResponse from './model/ErrorResponse';
 import HeartbeatController200Response from './model/HeartbeatController200Response';
 import ListApplicationsSuccess from './model/ListApplicationsSuccess';
+import ListWorkspaceSuccess from './model/ListWorkspaceSuccess';
 import LoginRequest from './model/LoginRequest';
 import LoginSuccess from './model/LoginSuccess';
 import UpdateWorkspaceRequest from './model/UpdateWorkspaceRequest';
 import WebServiceConfig from './model/WebServiceConfig';
 import WebServiceConfigOneOf from './model/WebServiceConfigOneOf';
 import WorkspaceDetails from './model/WorkspaceDetails';
-import WorkspaceListSuccess from './model/WorkspaceListSuccess';
 import WorkspaceSummary from './model/WorkspaceSummary';
 import ApplicationsApi from './api/ApplicationsApi';
 import HeartbeatApi from './api/HeartbeatApi';
@@ -53,7 +50,7 @@ import WorkspacesApi from './api/WorkspacesApi';
 
 
 /**
-* MultiTool.<br>
+* MultiTool backend API.<br>
 * The <code>index</code> module provides access to constructors for all the classes which comprise the public API.
 * <p>
 * An AMD (recommended!) or CommonJS application will generally do something equivalent to the following:
@@ -181,30 +178,6 @@ export {
     CreateApplicationSuccess,
 
     /**
-     * The CreateUserFailure model constructor.
-     * @property {module:model/CreateUserFailure}
-     */
-    CreateUserFailure,
-
-    /**
-     * The CreateUserFailureOneOf model constructor.
-     * @property {module:model/CreateUserFailureOneOf}
-     */
-    CreateUserFailureOneOf,
-
-    /**
-     * The CreateUserFailureOneOf1 model constructor.
-     * @property {module:model/CreateUserFailureOneOf1}
-     */
-    CreateUserFailureOneOf1,
-
-    /**
-     * The CreateUserFailureOneOfEmailAlreadyRegistered model constructor.
-     * @property {module:model/CreateUserFailureOneOfEmailAlreadyRegistered}
-     */
-    CreateUserFailureOneOfEmailAlreadyRegistered,
-
-    /**
      * The CreateUserRequest model constructor.
      * @property {module:model/CreateUserRequest}
      */
@@ -229,6 +202,12 @@ export {
     CreateWorkspaceSuccess,
 
     /**
+     * The ErrorResponse model constructor.
+     * @property {module:model/ErrorResponse}
+     */
+    ErrorResponse,
+
+    /**
      * The HeartbeatController200Response model constructor.
      * @property {module:model/HeartbeatController200Response}
      */
@@ -239,6 +218,12 @@ export {
      * @property {module:model/ListApplicationsSuccess}
      */
     ListApplicationsSuccess,
+
+    /**
+     * The ListWorkspaceSuccess model constructor.
+     * @property {module:model/ListWorkspaceSuccess}
+     */
+    ListWorkspaceSuccess,
 
     /**
      * The LoginRequest model constructor.
@@ -275,12 +260,6 @@ export {
      * @property {module:model/WorkspaceDetails}
      */
     WorkspaceDetails,
-
-    /**
-     * The WorkspaceListSuccess model constructor.
-     * @property {module:model/WorkspaceListSuccess}
-     */
-    WorkspaceListSuccess,
 
     /**
      * The WorkspaceSummary model constructor.

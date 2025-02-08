@@ -1,6 +1,6 @@
 /**
  * MultiTool
- * MultiTool
+ * MultiTool backend API
  *
  * The version of the OpenAPI document: 0.1.0
  * 
@@ -28,7 +28,7 @@
   var instance;
 
   beforeEach(function() {
-    instance = new MultiTool.HeartbeatResponse();
+    instance = new MultiTool.ErrorResponse();
   });
 
   var getProperty = function(object, getter, property) {
@@ -47,16 +47,16 @@
       object[property] = value;
   }
 
-  describe('HeartbeatResponse', function() {
-    it('should create an instance of HeartbeatResponse', function() {
-      // uncomment below and update the code to test HeartbeatResponse
-      //var instance = new MultiTool.HeartbeatResponse();
-      //expect(instance).to.be.a(MultiTool.HeartbeatResponse);
+  describe('ErrorResponse', function() {
+    it('should create an instance of ErrorResponse', function() {
+      // uncomment below and update the code to test ErrorResponse
+      //var instance = new MultiTool.ErrorResponse();
+      //expect(instance).to.be.a(MultiTool.ErrorResponse);
     });
 
-    it('should have the property ok (base name: "ok")', function() {
-      // uncomment below and update the code to test the property ok
-      //var instance = new MultiTool.HeartbeatResponse();
+    it('should have the property errors (base name: "errors")', function() {
+      // uncomment below and update the code to test the property errors
+      //var instance = new MultiTool.ErrorResponse();
       //expect(instance).to.be();
     });
 

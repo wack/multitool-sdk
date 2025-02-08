@@ -1,7 +1,7 @@
 /*
  * MultiTool
  *
- * MultiTool
+ * MultiTool backend API
  *
  * The version of the OpenAPI document: 0.1.0
  * 
@@ -15,15 +15,18 @@ use crate::models;
 pub struct LoginSuccess {
     #[serde(rename = "email")]
     pub email: String,
+    #[serde(rename = "expires_at")]
+    pub expires_at: String,
     #[serde(rename = "jwt")]
     pub jwt: String,
 }
 
 impl LoginSuccess {
     /// Successful login response payload
-    pub fn new(email: String, jwt: String) -> LoginSuccess {
+    pub fn new(email: String, expires_at: String, jwt: String) -> LoginSuccess {
         LoginSuccess {
             email,
+            expires_at,
             jwt,
         }
     }

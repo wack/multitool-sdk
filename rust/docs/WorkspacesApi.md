@@ -41,7 +41,7 @@ Name | Type | Description  | Required | Notes
 
 ## list_workspaces
 
-> models::WorkspaceListSuccess list_workspaces()
+> models::ListWorkspaceSuccess list_workspaces()
 
 
 ### Parameters
@@ -50,7 +50,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-[**models::WorkspaceListSuccess**](WorkspaceListSuccess.md)
+[**models::ListWorkspaceSuccess**](ListWorkspaceSuccess.md)
 
 ### Authorization
 

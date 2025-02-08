@@ -2,9 +2,10 @@
   "openapi": "3.1.0",
   "info": {
     "title": "MultiTool",
-    "description": "MultiTool",
+    "description": "MultiTool backend API",
     "license": {
-      "name": ""
+      "name": "All Rights Reserved",
+      "identifier": "LicenseRef-AllRightsReserved"
     },
     "version": "0.1.0"
   },
@@ -77,7 +78,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/CreateUserFailure"
+                  "$ref": "#/components/schemas/ErrorResponse"
                 }
               }
             }
@@ -138,7 +139,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/WorkspaceListSuccess"
+                  "$ref": "#/components/schemas/ListWorkspaceSuccess"
                 }
               }
             }
@@ -373,6 +374,54 @@
             "description": "Internal error"
           }
         }
+      },
+      "delete": {
+        "tags": [
+          "Applications"
+        ],
+        "operationId": "Delete Application",
+        "parameters": [
+          {
+            "name": "workspace_id",
+            "in": "path",
+            "description": "The workspace's id",
+            "required": true,
+            "schema": {
+              "$ref": "#/components/schemas/WorkspaceId"
+            }
+          },
+          {
+            "name": "application_id",
+            "in": "path",
+            "description": "The application's id",
+            "required": true,
+            "schema": {
+              "$ref": "#/components/schemas/AppId"
+            }
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "Application details",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/DeleteApplicationResponseBody"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          }
+        }
       }
     }
   },
@@ -581,66 +630,6 @@
           }
         }
       },
-      "CreateUserFailure": {
-        "oneOf": [
-          {
-            "type": "object",
-            "description": "When the email address is already associated with an account.",
-            "required": [
-              "EmailAlreadyRegistered"
-            ],
-            "properties": {
-              "EmailAlreadyRegistered": {
-                "type": "object",
-                "description": "When the email address is already associated with an account.",
-                "required": [
-                  "email"
-                ],
-                "properties": {
-                  "email": {
-                    "$ref": "#/components/schemas/Email"
-                  }
-                }
-              }
-            }
-          },
-          {
-            "type": "string",
-            "description": "When the user's password is not strong enough.",
-            "enum": [
-              "PasswordTooWeak"
-            ]
-          },
-          {
-            "type": "string",
-            "description": "When the server encountered an internal error.",
-            "enum": [
-              "InternalError"
-            ]
-          },
-          {
-            "type": "object",
-            "description": "When the user's email or account name are illegal.",
-            "required": [
-              "IllegalUserDetails"
-            ],
-            "properties": {
-              "IllegalUserDetails": {
-                "type": "string",
-                "description": "When the user's email or account name are illegal."
-              }
-            }
-          },
-          {
-            "type": "string",
-            "description": "When the user's password matches their account name or email.",
-            "enum": [
-              "PasswordTooObvious"
-            ]
-          }
-        ],
-        "description": "Failure to create a new users.\nCorresponds to POST /users/"
-      },
       "CreateUserRequest": {
         "type": "object",
         "description": "Expected body of user endpoint requests",
@@ -665,7 +654,8 @@
         "required": [
           "email",
           "created_at",
-          "jwt"
+          "jwt",
+          "expires_at"
         ],
         "properties": {
           "created_at": {
@@ -674,6 +664,10 @@
           },
           "email": {
             "$ref": "#/components/schemas/Email"
+          },
+          "expires_at": {
+            "type": "string",
+            "format": "date-time"
           },
           "jwt": {
             "type": "string"
@@ -716,8 +710,25 @@
           }
         }
       },
+      "DeleteApplicationResponseBody": {
+        "type": "object"
+      },
       "Email": {
         "type": "string"
+      },
+      "ErrorResponse": {
+        "type": "object",
+        "required": [
+          "errors"
+        ],
+        "properties": {
+          "errors": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          }
+        }
       },
       "ListApplicationsSuccess": {
         "type": "object",
@@ -729,6 +740,20 @@
             "type": "array",
             "items": {
               "$ref": "#/components/schemas/ApplicationSummary"
+            }
+          }
+        }
+      },
+      "ListWorkspaceSuccess": {
+        "type": "object",
+        "required": [
+          "workspaces"
+        ],
+        "properties": {
+          "workspaces": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/WorkspaceSummary"
             }
           }
         }
@@ -755,11 +780,15 @@
         "description": "Successful login response payload",
         "required": [
           "email",
-          "jwt"
+          "jwt",
+          "expires_at"
         ],
         "properties": {
           "email": {
             "$ref": "#/components/schemas/Email"
+          },
+          "expires_at": {
+            "type": "string"
           },
           "jwt": {
             "type": "string"
@@ -828,20 +857,6 @@
       "WorkspaceId": {
         "type": "string",
         "format": "uuid"
-      },
-      "WorkspaceListSuccess": {
-        "type": "object",
-        "required": [
-          "workspaces"
-        ],
-        "properties": {
-          "workspaces": {
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/WorkspaceSummary"
-            }
-          }
-        }
       },
       "WorkspaceSummary": {
         "type": "object",

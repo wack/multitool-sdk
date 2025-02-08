@@ -1,7 +1,7 @@
 /*
  * MultiTool
  *
- * MultiTool
+ * MultiTool backend API
  *
  * The version of the OpenAPI document: 0.1.0
  * 
@@ -11,14 +11,14 @@
 use crate::models;
 
 #[derive(Clone, Default, Debug, PartialEq, Serialize, Deserialize)]
-pub struct WorkspaceListSuccess {
+pub struct ListWorkspaceSuccess {
     #[serde(rename = "workspaces")]
     pub workspaces: Vec<models::WorkspaceSummary>,
 }
 
-impl WorkspaceListSuccess {
-    pub fn new(workspaces: Vec<models::WorkspaceSummary>) -> WorkspaceListSuccess {
-        WorkspaceListSuccess {
+impl ListWorkspaceSuccess {
+    pub fn new(workspaces: Vec<models::WorkspaceSummary>) -> ListWorkspaceSuccess {
+        ListWorkspaceSuccess {
             workspaces,
         }
     }

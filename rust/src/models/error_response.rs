@@ -11,15 +11,15 @@
 use crate::models;
 
 #[derive(Clone, Default, Debug, PartialEq, Serialize, Deserialize)]
-pub struct CreateWorkspaceRequest {
-    #[serde(rename = "display_name")]
-    pub display_name: String,
+pub struct ErrorResponse {
+    #[serde(rename = "errors")]
+    pub errors: Vec<String>,
 }
 
-impl CreateWorkspaceRequest {
-    pub fn new(display_name: String) -> CreateWorkspaceRequest {
-        CreateWorkspaceRequest {
-            display_name,
+impl ErrorResponse {
+    pub fn new(errors: Vec<String>) -> ErrorResponse {
+        ErrorResponse {
+            errors,
         }
     }
 }

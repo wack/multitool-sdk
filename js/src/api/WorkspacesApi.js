@@ -1,6 +1,6 @@
 /**
  * MultiTool
- * MultiTool
+ * MultiTool backend API
  *
  * The version of the OpenAPI document: 0.1.0
  * 
@@ -15,9 +15,9 @@
 import ApiClient from "../ApiClient";
 import CreateWorkspaceRequest from '../model/CreateWorkspaceRequest';
 import CreateWorkspaceSuccess from '../model/CreateWorkspaceSuccess';
+import ListWorkspaceSuccess from '../model/ListWorkspaceSuccess';
 import UpdateWorkspaceRequest from '../model/UpdateWorkspaceRequest';
 import WorkspaceDetails from '../model/WorkspaceDetails';
-import WorkspaceListSuccess from '../model/WorkspaceListSuccess';
 
 /**
 * Workspaces service.
@@ -83,7 +83,7 @@ export default class WorkspacesApi {
 
 
     /**
-     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:model/WorkspaceListSuccess} and HTTP response
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:model/ListWorkspaceSuccess} and HTTP response
      */
     listWorkspacesWithHttpInfo() {
       let postBody = null;
@@ -100,7 +100,7 @@ export default class WorkspacesApi {
       let authNames = ['bearer_auth'];
       let contentTypes = [];
       let accepts = ['application/json'];
-      let returnType = WorkspaceListSuccess;
+      let returnType = ListWorkspaceSuccess;
       return this.apiClient.callApi(
         '/api/v1/workspaces', 'GET',
         pathParams, queryParams, headerParams, formParams, postBody,
@@ -109,7 +109,7 @@ export default class WorkspacesApi {
     }
 
     /**
-     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/WorkspaceListSuccess}
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/ListWorkspaceSuccess}
      */
     listWorkspaces() {
       return this.listWorkspacesWithHttpInfo()

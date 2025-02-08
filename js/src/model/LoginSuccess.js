@@ -1,6 +1,6 @@
 /**
  * MultiTool
- * MultiTool
+ * MultiTool backend API
  *
  * The version of the OpenAPI document: 0.1.0
  * 
@@ -24,11 +24,12 @@ class LoginSuccess {
      * Successful login response payload
      * @alias module:model/LoginSuccess
      * @param email {String} 
+     * @param expiresAt {String} 
      * @param jwt {String} 
      */
-    constructor(email, jwt) { 
+    constructor(email, expiresAt, jwt) { 
         
-        LoginSuccess.initialize(this, email, jwt);
+        LoginSuccess.initialize(this, email, expiresAt, jwt);
     }
 
     /**
@@ -36,8 +37,9 @@ class LoginSuccess {
      * This method is used by the constructors of any subclasses, in order to implement multiple inheritance (mix-ins).
      * Only for internal use.
      */
-    static initialize(obj, email, jwt) { 
+    static initialize(obj, email, expiresAt, jwt) { 
         obj['email'] = email;
+        obj['expires_at'] = expiresAt;
         obj['jwt'] = jwt;
     }
 
@@ -54,6 +56,9 @@ class LoginSuccess {
 
             if (data.hasOwnProperty('email')) {
                 obj['email'] = ApiClient.convertToType(data['email'], 'String');
+            }
+            if (data.hasOwnProperty('expires_at')) {
+                obj['expires_at'] = ApiClient.convertToType(data['expires_at'], 'String');
             }
             if (data.hasOwnProperty('jwt')) {
                 obj['jwt'] = ApiClient.convertToType(data['jwt'], 'String');
@@ -79,6 +84,10 @@ class LoginSuccess {
             throw new Error("Expected the field `email` to be a primitive type in the JSON string but got " + data['email']);
         }
         // ensure the json data is a string
+        if (data['expires_at'] && !(typeof data['expires_at'] === 'string' || data['expires_at'] instanceof String)) {
+            throw new Error("Expected the field `expires_at` to be a primitive type in the JSON string but got " + data['expires_at']);
+        }
+        // ensure the json data is a string
         if (data['jwt'] && !(typeof data['jwt'] === 'string' || data['jwt'] instanceof String)) {
             throw new Error("Expected the field `jwt` to be a primitive type in the JSON string but got " + data['jwt']);
         }
@@ -89,12 +98,17 @@ class LoginSuccess {
 
 }
 
-LoginSuccess.RequiredProperties = ["email", "jwt"];
+LoginSuccess.RequiredProperties = ["email", "expires_at", "jwt"];
 
 /**
  * @member {String} email
  */
 LoginSuccess.prototype['email'] = undefined;
+
+/**
+ * @member {String} expires_at
+ */
+LoginSuccess.prototype['expires_at'] = undefined;
 
 /**
  * @member {String} jwt

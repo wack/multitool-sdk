@@ -1,6 +1,6 @@
 /**
  * MultiTool
- * MultiTool
+ * MultiTool backend API
  *
  * The version of the OpenAPI document: 0.1.0
  * 
@@ -16,6 +16,7 @@ import ApiClient from "../ApiClient";
 import ApplicationDetails from '../model/ApplicationDetails';
 import CreateApplicationRequest from '../model/CreateApplicationRequest';
 import CreateApplicationSuccess from '../model/CreateApplicationSuccess';
+import ErrorResponse from '../model/ErrorResponse';
 import ListApplicationsSuccess from '../model/ListApplicationsSuccess';
 
 /**
@@ -82,6 +83,57 @@ export default class ApplicationsApi {
      */
     createApplication(createApplicationRequest, workspaceId) {
       return this.createApplicationWithHttpInfo(createApplicationRequest, workspaceId)
+        .then(function(response_and_data) {
+          return response_and_data.data;
+        });
+    }
+
+
+    /**
+     * @param {String} workspaceId The workspace's id
+     * @param {String} applicationId The application's id
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link Object} and HTTP response
+     */
+    deleteApplicationWithHttpInfo(workspaceId, applicationId) {
+      let postBody = null;
+      // verify the required parameter 'workspaceId' is set
+      if (workspaceId === undefined || workspaceId === null) {
+        throw new Error("Missing the required parameter 'workspaceId' when calling deleteApplication");
+      }
+      // verify the required parameter 'applicationId' is set
+      if (applicationId === undefined || applicationId === null) {
+        throw new Error("Missing the required parameter 'applicationId' when calling deleteApplication");
+      }
+
+      let pathParams = {
+        'workspace_id': workspaceId,
+        'application_id': applicationId
+      };
+      let queryParams = {
+      };
+      let headerParams = {
+      };
+      let formParams = {
+      };
+
+      let authNames = ['bearer_auth'];
+      let contentTypes = [];
+      let accepts = ['application/json'];
+      let returnType = Object;
+      return this.apiClient.callApi(
+        '/api/v1/workspaces/{workspace_id}/applications/{application_id}', 'DELETE',
+        pathParams, queryParams, headerParams, formParams, postBody,
+        authNames, contentTypes, accepts, returnType, null
+      );
+    }
+
+    /**
+     * @param {String} workspaceId The workspace's id
+     * @param {String} applicationId The application's id
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link Object}
+     */
+    deleteApplication(workspaceId, applicationId) {
+      return this.deleteApplicationWithHttpInfo(workspaceId, applicationId)
         .then(function(response_and_data) {
           return response_and_data.data;
         });
